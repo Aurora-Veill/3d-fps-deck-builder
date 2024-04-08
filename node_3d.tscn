@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c087l7ltwvq5r"]
+
+[ext_resource type="Texture2D" uid="uid://e2uq5mapky4f" path="res://icon.svg" id="1_b2q67"]
+[ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
+
+[sub_resource type="Environment" id="Environment_tflw2"]
+background_mode = 2
+background_energy_multiplier = 2.43
+ambient_light_source = 3
+ambient_light_color = Color(1, 0.305882, 0.345098, 1)
+ambient_light_energy = 2.43
+reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uuqen"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(30, 1, 30)
+
+[node name="Sprite3D" type="Sprite3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17404, 0)
+texture = ExtResource("1_b2q67")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_scl8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45815, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tflw2")
+camera_attributes = SubResource("CameraAttributesPractical_uuqen")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.792566, -0.609786, 7.27844e-09, 0.269711, 0.350556, 0.896865, -0.546895, -0.710825, 0.442304, -1.63957, 17.8696, 7.63624)
