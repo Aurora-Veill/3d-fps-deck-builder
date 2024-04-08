@@ -31,4 +31,4 @@ environment = SubResource("Environment_tflw2")
 camera_attributes = SubResource("CameraAttributesPractical_uuqen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.792566, -0.609786, 7.27844e-09, 0.269711, 0.350556, 0.896865, -0.546895, -0.710825, 0.442304, -1.63957, 17.8696, 7.63624)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 18.2122, 0)
