@@ -8,7 +8,8 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var cameraf = $fpv
-@onready var camera3 = $tpv
+@onready var camera3 = $PivotPoint/tpv
+@onready var pivot = $PivotPoint
 func _process(delta):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _physics_process(delta):
@@ -45,4 +46,5 @@ func _input(event):
 		if cameraf.is_current():
 			cameraf.rotation.x -= event.relative.y / 250
 		else:
-			camera3.rotation.x -= event.relative.y / 250
+			pivot.rotation.x -= event.relative.y / 250
+			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-45), deg_to_rad(45))

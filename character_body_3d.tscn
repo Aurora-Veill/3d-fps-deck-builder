@@ -15,9 +15,11 @@ shape = SubResource("CapsuleShape3D_q2c65")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tis65")
 
-[node name="tpv" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.83081, 0.556557, 0, -0.556557, 0.83081, 0, 2.77776, 3.31885)
-
 [node name="fpv" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.997934, -0.0642537, 0, 0.0642537, 0.997934, 0, 0, 0)
 current = true
+
+[node name="PivotPoint" type="Node3D" parent="."]
+
+[node name="tpv" type="Camera3D" parent="PivotPoint"]
+transform = Transform3D(1, 0, 0, 0, 0.736333, 0.676619, 0, -0.676619, 0.736333, 0, 2.77776, 3.31885)
