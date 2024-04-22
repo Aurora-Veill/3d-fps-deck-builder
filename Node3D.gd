@@ -21,3 +21,4 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body):
 	if body != maker and body.has_method("damage"):
 		body.damage(dmg)
+		queue_free()

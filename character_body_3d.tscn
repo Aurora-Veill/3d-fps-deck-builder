@@ -19,10 +19,5 @@ mesh = SubResource("CapsuleMesh_tis65")
 transform = Transform3D(1, 0, 0, 0, 0.997934, -0.0642537, 0, 0.0642537, 0.997934, 0, 0, 0)
 current = true
 
-[node name="PivotPoint" type="Node3D" parent="."]
-
-[node name="tpv" type="Camera3D" parent="PivotPoint"]
-transform = Transform3D(1, 0, 0, 0, 0.736333, 0.676619, 0, -0.676619, 0.736333, 0, 2.77776, 3.31885)
-
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0)

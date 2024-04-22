@@ -14,3 +14,5 @@ shape = SubResource("CapsuleShape3D_0ydvp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_lfkk1")
+
+[node name="navigator" type="NavigationAgent3D" parent="."]

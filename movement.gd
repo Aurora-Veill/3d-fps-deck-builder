@@ -9,8 +9,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var projectile = preload("res://projectile.tscn")
 var hp = 100
 @onready var cameraf = $fpv
-@onready var camera3 = $PivotPoint/tpv
-@onready var pivot = $PivotPoint
 @onready var rayRizzo = $RayCast3D
 func _process(delta):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -23,11 +21,6 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("change_camera"):
-		if cameraf.is_current():
-			camera3.make_current()
-		else:
-			cameraf.make_current()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backwards")
@@ -46,14 +39,10 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x / 100
-		if cameraf.is_current():
-			cameraf.rotation.x -= event.relative.y / 250
-		else:
-			pivot.rotation.x -= event.relative.y / 250
-			pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-45), deg_to_rad(45))
+		cameraf.rotation.x -= event.relative.y / 250
 func attack(projectile: PackedScene) -> void:
 	var atk = projectile.instantiate()
-	atk.position = global_position
+	atk.position = position
 	atk.direction = -cameraf.get_global_transform().basis.z
 	atk.maker = self
 	get_parent().add_child(atk)
