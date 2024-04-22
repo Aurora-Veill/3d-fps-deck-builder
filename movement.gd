@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var projectile = preload("res://projectile.tscn")
+var hp = 100
 @onready var cameraf = $fpv
 @onready var camera3 = $PivotPoint/tpv
 @onready var pivot = $PivotPoint
@@ -54,6 +55,7 @@ func attack(projectile: PackedScene) -> void:
 	var atk = projectile.instantiate()
 	atk.position = global_position
 	atk.direction = -cameraf.get_global_transform().basis.z
+	atk.maker = self
 	get_parent().add_child(atk)
 func damage(dmg):
-	print("ouch")
+	hp -= dmg

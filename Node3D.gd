@@ -5,6 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") / 100
 var direction = Vector3.ZERO
 var velocityY = 0
 var dmg = 1
+var maker := CharacterBody3D
 func _ready():
 	set_as_top_level(true)
 
@@ -18,7 +19,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body):
-	print(get_parent())
-	print(body)
-	if body.has_method("damage"):
+	if body != maker and body.has_method("damage"):
 		body.damage(dmg)

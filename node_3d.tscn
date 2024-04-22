@@ -46,4 +46,4 @@ camera_attributes = SubResource("CameraAttributesPractical_uuqen")
 transform = Transform3D(1, 0, 0, 0, 0.263385, 0.964691, 0, -0.964691, 0.263385, 0, 18.2122, 8.18105)
 
 [node name="Enemy" parent="." instance=ExtResource("4_gy7lr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4907, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4907, 5.53009, 0)

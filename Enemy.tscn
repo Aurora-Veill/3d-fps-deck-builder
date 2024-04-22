@@ -1,13 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ucq1aph8j4pn"]
-
-[ext_resource type="Script" path="res://Enemy.gd" id="1_7el6l"]
+[gd_scene load_steps=3 format=3 uid="uid://ucq1aph8j4pn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ydvp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lfkk1"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_7el6l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0ydvp")
