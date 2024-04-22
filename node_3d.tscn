@@ -1,15 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=10 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="Texture2D" uid="uid://dqj6iapirjnh8" path="res://Free_pixel_tiles_pack/cobblestone_1.png" id="1_55pi2"]
 [ext_resource type="Texture2D" uid="uid://e2uq5mapky4f" path="res://icon.svg" id="1_b2q67"]
 [ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
+[ext_resource type="PackedScene" uid="uid://ucq1aph8j4pn" path="res://Enemy.tscn" id="4_gy7lr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ci2y"]
 albedo_texture = ExtResource("1_55pi2")
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83mae"]
+
+[sub_resource type="Sky" id="Sky_e4oif"]
+sky_material = SubResource("ProceduralSkyMaterial_83mae")
+
 [sub_resource type="Environment" id="Environment_tflw2"]
 background_mode = 2
 background_energy_multiplier = 2.43
+sky = SubResource("Sky_e4oif")
 ambient_light_source = 3
 ambient_light_color = Color(1, 0.305882, 0.345098, 1)
 ambient_light_energy = 2.43
@@ -37,3 +44,6 @@ camera_attributes = SubResource("CameraAttributesPractical_uuqen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.263385, 0.964691, 0, -0.964691, 0.263385, 0, 18.2122, 8.18105)
+
+[node name="Enemy" parent="." instance=ExtResource("4_gy7lr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4907, 0, 0)

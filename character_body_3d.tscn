@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tis65"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="character" type="CharacterBody3D"]
 script = ExtResource("1_fmirg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,3 +23,6 @@ current = true
 
 [node name="tpv" type="Camera3D" parent="PivotPoint"]
 transform = Transform3D(1, 0, 0, 0, 0.736333, 0.676619, 0, -0.676619, 0.736333, 0, 2.77776, 3.31885)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0)
