@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw3sgmbukcg5t"]
 
-[ext_resource type="Script" path="res://Node3D.gd" id="1_fywpe"]
+[ext_resource type="Script" path="res://Card.gd" id="1_2uidk"]
 [ext_resource type="Texture2D" uid="uid://b4xri70163n2o" path="res://Beam-Beta.png" id="2_uve0i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x0pdc"]
@@ -11,8 +11,8 @@ height = 0.4
 radius = 0.21
 height = 0.42
 
-[node name="bulett" type="Node3D"]
-script = ExtResource("1_fywpe")
+[node name="bullet" type="Node3D"]
+script = ExtResource("1_2uidk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("2_uve0i")
@@ -26,3 +26,4 @@ mesh = SubResource("CapsuleMesh_x0pdc")
 shape = SubResource("CapsuleShape3D_i32u5")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
