@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cof1cf5gtmex"]
+[gd_scene load_steps=5 format=3 uid="uid://cof1cf5gtmex"]
 
 [ext_resource type="Script" path="res://movement.gd" id="1_fmirg"]
+[ext_resource type="PackedScene" uid="uid://dhhhc0afvu644" path="res://hp.tscn" id="2_cschx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q2c65"]
 
@@ -21,3 +22,5 @@ current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0)
+
+[node name="HP" parent="." instance=ExtResource("2_cschx")]

@@ -8,4 +8,5 @@ func use(Player):
 	PC.velocity = direction.normalized() * 400
 	uses -= 1
 	if uses <= 0:
+		PC.removeCard()
 		queue_free()

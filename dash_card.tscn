@@ -4,4 +4,4 @@
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_hksr8")
-uses = 500
+uses = 10

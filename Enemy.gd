@@ -15,11 +15,11 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	var direction = Vector3.ZERO
 	nav.set_target_position(target.global_position)
-	
+	print($HP.hp)
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	velocity = velocity.lerp(direction * SPEED, delta)
 	move_and_slide()
-func damage(dmg):
-	hp -= dmg
-	if hp == 0:
-		queue_free()
+
+
+func _on_hp_on_death():
+	queue_free() # Replace with function body.

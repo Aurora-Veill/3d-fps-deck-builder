@@ -13,11 +13,10 @@ var activeCard = 0
 var hasDashed = false
 func _ready():
 	hand.append(load("res://dash_card.tscn").instantiate())
-func _process(delta):
+func _process(_delta):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	
 	if not is_on_floor():
 		if hasDashed:
 			velocity.y -= gravity * delta * 3
@@ -41,7 +40,11 @@ func _physics_process(delta):
 		attack(projectile)
 	
 	if Input.is_action_just_pressed("use_card"):
-		if hand[activeCard] and hand[activeCard].has_method("use"):
+		if hand.size() <= activeCard:
+			return
+		if !hand[activeCard]:
+			return
+		if hand[activeCard].has_method("use"):
 			hand[activeCard].use(self)
 		
 	if Input.is_action_just_pressed("cycle_card_left"):
@@ -69,5 +72,6 @@ func attack(projectile: PackedScene) -> void:
 	atk.maker = self
 	get_parent().add_child(atk)
 	
-func damage(dmg):
-	hp -= dmg
+
+func removeCard():
+	hand.remove_at(activeCard)

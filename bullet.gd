@@ -19,11 +19,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body):
-	if body != maker and body.has_method("damage"):
-		body.damage(dmg)
+	if body != maker and body.has_node("HP"):
+		body.get_node("HP").take_dmg(dmg)
 		queue_free()
 
 
-func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_area_3d_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body != maker:
 		queue_free() # Replace with function body.
