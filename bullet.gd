@@ -27,3 +27,6 @@ func _on_area_3d_body_entered(body):
 func _on_area_3d_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body != maker:
 		queue_free() # Replace with function body.
+
+func set_dir(dir):
+	direction = dir

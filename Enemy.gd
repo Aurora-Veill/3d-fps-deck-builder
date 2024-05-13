@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 4.5
 @export var target := Node3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var hp = 2
+var projectile = preload("res://projectile.tscn")
 @onready var nav = $navigator
 func _physics_process(delta):
 	# Add the gravity.
@@ -18,7 +19,15 @@ func _physics_process(delta):
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	velocity = velocity.lerp(direction * SPEED, delta)
 	move_and_slide()
-
-
+	if target.position.distance_to(position) < 100:
+		attack(projectile)
+		
+func attack(projectile: PackedScene) -> void:
+		var atk = projectile.instantiate()
+		atk.position = position
+		atk.direction = (target.position - position).normalized()
+		atk.maker = self
+		get_parent().add_child(atk)
+		
 func _on_hp_on_death():
 	queue_free() # Replace with function body.

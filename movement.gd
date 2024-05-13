@@ -4,7 +4,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 9
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var projectile = preload("res://projectile.tscn")
+var projectile = preload("res://projectile_charge.tscn")
 var hp = 100
 @onready var cameraf = $fpv
 var hand = Array()
@@ -67,7 +67,7 @@ func _input(event):
 func attack(projectile: PackedScene) -> void:
 	var atk = projectile.instantiate()
 	atk.position = position
-	atk.direction = -cameraf.get_global_transform().basis.z
+	atk.set_dir(-cameraf.get_global_transform().basis.z)
 	atk.maker = self
 	get_parent().add_child(atk)
 	
