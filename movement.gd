@@ -7,7 +7,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var projectile = preload("res://projectile.tscn")
 var hp = 100
 @onready var cameraf = $fpv
-@onready var rayRizzo = $RayCast3D
 var hand = Array()
 var activeCard = 0
 var hasDashed = false

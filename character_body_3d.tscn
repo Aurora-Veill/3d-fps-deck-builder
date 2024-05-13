@@ -20,7 +20,4 @@ mesh = SubResource("CapsuleMesh_tis65")
 transform = Transform3D(1, 0, 0, 0, 0.997934, -0.0642537, 0, 0.0642537, 0.997934, 0, 0, 0)
 current = true
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0)
-
 [node name="HP" parent="." instance=ExtResource("2_cschx")]
