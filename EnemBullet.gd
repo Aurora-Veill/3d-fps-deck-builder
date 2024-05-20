@@ -13,7 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	velocityY -= gravity * delta 
 	position += direction * speed * delta * 60
 	position.y += velocityY 
 	
@@ -29,11 +28,5 @@ func _on_area_3d_body_shape_entered(_body_rid, body, _body_shape_index, _local_s
 		else:
 			queue_free()
 
-func set_dir(dir, grav):
+func set_dir(dir):
 	direction = dir
-	if (!grav):
-		gravity = 0
-
-
-func _on_timer_timeout():
-	queue_free() # Replace with function body.

@@ -4,8 +4,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 9
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var projectile = preload("res://projectile_charge.tscn")
-var hp = 100
+var projectile = preload("res://projectile.tscn")
 @onready var cameraf = $fpv
 var hand = Array()
 var activeCard = 0
@@ -67,10 +66,18 @@ func _input(event):
 func attack(projectile: PackedScene) -> void:
 	var atk = projectile.instantiate()
 	atk.position = position
-	atk.set_dir(-cameraf.get_global_transform().basis.z)
+	atk.set_dir(-cameraf.get_global_transform().basis.z, true)
 	atk.maker = self
 	get_parent().add_child(atk)
 	
 
 func removeCard():
 	hand.remove_at(activeCard)
+
+
+func _on_hp_on_death():
+	get_tree().change_scene_to_file("res://node_3d.tscn")
+
+
+func _on_hp_take_dmg():
+	print($HP.hp) # Replace with function body.

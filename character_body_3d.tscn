@@ -21,3 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 0.997934, -0.0642537, 0, 0.0642537, 0.997934
 current = true
 
 [node name="HP" parent="." instance=ExtResource("2_cschx")]
+maxHP = 10
+
+[connection signal="onDeath" from="HP" to="." method="_on_hp_on_death"]
+[connection signal="takeDmg" from="HP" to="." method="_on_hp_take_dmg"]
