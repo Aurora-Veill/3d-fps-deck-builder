@@ -1,6 +1,8 @@
 extends Node3D
 var enemy = preload("res://Enemy.tscn")
 @onready var spawns = $Spawns.get_children()
+@onready var PC = $PC
+@onready var FOV = $Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -16,3 +18,4 @@ func _on_timer_timeout():
 	enem.position = spawns[(randi() % spawns.size())].position
 	enem.target = $PC
 	add_child(enem)
+

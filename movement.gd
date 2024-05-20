@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 9
-
+signal take_dmg
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var projectile = preload("res://projectile.tscn")
 @onready var cameraf = $fpv
@@ -80,4 +80,4 @@ func _on_hp_on_death():
 
 
 func _on_hp_take_dmg():
-	print($HP.hp) # Replace with function body.
+	take_dmg.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=16 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="Texture2D" uid="uid://dqj6iapirjnh8" path="res://Free_pixel_tiles_pack/cobblestone_1.png" id="1_55pi2"]
 [ext_resource type="Texture2D" uid="uid://e2uq5mapky4f" path="res://icon.svg" id="1_b2q67"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://node_3d.gd" id="1_yoqtr"]
 [ext_resource type="PackedScene" uid="uid://ucq1aph8j4pn" path="res://Enemy.tscn" id="4_gy7lr"]
 [ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="5_vbrxr"]
+[ext_resource type="Script" path="res://Control.gd" id="6_w6i24"]
+[ext_resource type="Texture2D" uid="uid://cbfirovlf2pc6" path="res://Screen Overlay Effects/blurry Blood Smear Overlay.png" id="7_abb43"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83mae"]
 
@@ -29,6 +31,10 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ci2y"]
 albedo_texture = ExtResource("1_55pi2")
+
+[sub_resource type="Curve" id="Curve_tpruo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_yoqtr")
@@ -75,11 +81,15 @@ use_collision = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_w6i24")
+dmgCurve = SubResource("Curve_tpruo")
 
 [node name="BoxContainer" type="BoxContainer" parent="Control"]
 layout_mode = 1
@@ -94,6 +104,10 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="Control/BoxContainer"]
 scale = Vector2(2, 2)
 texture = ExtResource("5_vbrxr")
+
+[node name="Blood" type="Sprite2D" parent="Control/BoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("7_abb43")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -125,4 +139,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2521, 1, -3.84732)
 [node name="Node3D8" type="Node3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4191, 1, -31.4061)
 
+[connection signal="take_dmg" from="PC" to="Control" method="_on_pc_take_dmg"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
