@@ -1,13 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=20 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="Texture2D" uid="uid://dqj6iapirjnh8" path="res://Free_pixel_tiles_pack/cobblestone_1.png" id="1_55pi2"]
-[ext_resource type="Texture2D" uid="uid://e2uq5mapky4f" path="res://icon.svg" id="1_b2q67"]
 [ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
-[ext_resource type="Script" path="res://node_3d.gd" id="1_yoqtr"]
-[ext_resource type="PackedScene" uid="uid://ucq1aph8j4pn" path="res://Enemy.tscn" id="4_gy7lr"]
+[ext_resource type="PackedScene" uid="uid://bill4hihgcgko" path="res://card_pickup.tscn" id="2_myxa0"]
+[ext_resource type="PackedScene" uid="uid://cv3ut4fjk4onv" path="res://dash_card.tscn" id="3_sdl81"]
+[ext_resource type="Texture2D" uid="uid://bck6h5ordox76" path="res://Screen Overlay Effects/Warbringer.png" id="4_5juu7"]
+[ext_resource type="PackedScene" uid="uid://bdq7fxo07dbuf" path="res://charge_proj_card.tscn" id="5_oaamp"]
 [ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="5_vbrxr"]
+[ext_resource type="Texture2D" uid="uid://cvhsmqx8lkdth" path="res://Image.jpg" id="6_m307q"]
 [ext_resource type="Script" path="res://Control.gd" id="6_w6i24"]
 [ext_resource type="Texture2D" uid="uid://cbfirovlf2pc6" path="res://Screen Overlay Effects/blurry Blood Smear Overlay.png" id="7_abb43"]
+[ext_resource type="Script" path="res://EnemSpawner.gd" id="12_f3dck"]
+[ext_resource type="Script" path="res://UpgradeSpawner.gd" id="13_3mcwk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83mae"]
 
@@ -33,11 +37,20 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 albedo_texture = ExtResource("1_55pi2")
 
 [sub_resource type="Curve" id="Curve_tpruo"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0.75), 0.0, 0.0, 0, 0, Vector2(0.75, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_yoqtr")
+
+[node name="CardPickup" parent="." instance=ExtResource("2_myxa0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.640744, 6.69345, -16.4626)
+heldcard = ExtResource("3_sdl81")
+sprite = ExtResource("4_5juu7")
+
+[node name="CardPickup2" parent="." instance=ExtResource("2_myxa0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14.6)
+heldcard = ExtResource("5_oaamp")
+sprite = ExtResource("6_m307q")
 
 [node name="PC" parent="." instance=ExtResource("1_scl8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45815, 0)
@@ -49,10 +62,6 @@ camera_attributes = SubResource("CameraAttributesPractical_uuqen")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.263385, 0.964691, 0, -0.964691, 0.263385, 0, 18.2122, 8.18105)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_gy7lr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4907, 5.53009, 0)
-target = NodePath("../PC")
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 navigation_mesh = SubResource("NavigationMesh_n6t32")
@@ -62,10 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_8ci2y")
 use_collision = true
 size = Vector3(100, 1, 100)
-
-[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17404, 0)
-texture = ExtResource("1_b2q67")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 0.866025, -5, 0, 0.5, 8.66025, 0.274, 1.5, -9.061)
@@ -139,5 +144,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2521, 1, -3.84732)
 [node name="Node3D8" type="Node3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4191, 1, -31.4061)
 
-[connection signal="take_dmg" from="PC" to="Control" method="_on_pc_take_dmg"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="EnemSpawner" type="Node3D" parent="."]
+script = ExtResource("12_f3dck")
+
+[node name="UpgradeSpawner" type="Node3D" parent="."]
+script = ExtResource("13_3mcwk")
+
+[connection signal="timeout" from="Timer" to="EnemSpawner" method="_on_timer_timeout"]
+[connection signal="enemDeath" from="EnemSpawner" to="UpgradeSpawner" method="_on_enem_spawner_enem_death"]

@@ -36,5 +36,5 @@ func _on_area_3d_body_shape_entered(_body_rid, body, _body_shape_index, _local_s
 		else:
 			queue_free()
 
-func set_dir(dir):
+func set_dir(dir, _grav):
 	pVel = dir.normalized() / 1000

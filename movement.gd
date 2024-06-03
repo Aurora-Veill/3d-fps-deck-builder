@@ -9,8 +9,6 @@ var projectile = preload("res://projectile.tscn")
 var hand = Array()
 var activeCard = 0
 var hasDashed = false
-func _ready():
-	hand.append(load("res://dash_card.tscn").instantiate())
 func _process(_delta):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -38,12 +36,7 @@ func _physics_process(delta):
 		attack(projectile)
 	
 	if Input.is_action_just_pressed("use_card"):
-		if hand.size() <= activeCard:
-			return
-		if !hand[activeCard]:
-			return
-		if hand[activeCard].has_method("use"):
-			hand[activeCard].use(self)
+		useCard()
 		
 	if Input.is_action_just_pressed("cycle_card_left"):
 		activeCard -= 1
@@ -73,11 +66,23 @@ func attack(projectile: PackedScene) -> void:
 
 func removeCard():
 	hand.remove_at(activeCard)
+	activeCard = max(0, activeCard-1)
 
+func addCard(Card):
+	hand.append(Card.instantiate())
 
 func _on_hp_on_death():
 	get_tree().change_scene_to_file("res://node_3d.tscn")
 
-
+func useCard():
+	if hand.size() == 0:
+		return
+	if hand.size() <= activeCard:
+		return
+	if !hand[activeCard]:
+		return
+	if hand[activeCard].has_method("use"):
+		hand[activeCard].use(self)
+			
 func _on_hp_take_dmg():
 	take_dmg.emit()

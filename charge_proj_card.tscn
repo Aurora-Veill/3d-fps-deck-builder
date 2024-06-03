@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdq7fxo07dbuf"]
+
+[ext_resource type="Script" path="res://ChargeProj_card.gd" id="1_3jld3"]
+
+[node name="ChargeProj_card" type="Node3D"]
+script = ExtResource("1_3jld3")
+uses = 5

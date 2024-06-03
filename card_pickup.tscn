@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bill4hihgcgko"]
+
+[ext_resource type="Script" path="res://CardPickup.gd" id="1_ekdsj"]
+[ext_resource type="Texture2D" uid="uid://bck6h5ordox76" path="res://Screen Overlay Effects/Warbringer.png" id="2_s2mk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_smfm2"]
+size = Vector3(1.1, 1.55, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3hp7"]
+size = Vector3(1.7, 2.2, 1)
+
+[node name="CardPickup" type="Node3D"]
+script = ExtResource("1_ekdsj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_smfm2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.026)
+texture = ExtResource("2_s2mk1")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, -0.026)
+texture = ExtResource("2_s2mk1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_q3hp7")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
