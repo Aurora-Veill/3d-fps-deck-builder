@@ -38,12 +38,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("use_card"):
 		useCard()
 		
-	if Input.is_action_just_pressed("cycle_card_left"):
+	if Input.is_action_just_pressed("cycle_card_right"):
 		activeCard -= 1
 		if activeCard == -1:
 			activeCard = hand.size() - 1
 		
-	if Input.is_action_just_pressed("cycle_card_right"):
+	if Input.is_action_just_pressed("cycle_card_left"):
 		activeCard += 1
 		if activeCard == hand.size():
 			activeCard = 0
