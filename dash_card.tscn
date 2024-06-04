@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv3ut4fjk4onv"]
+[gd_scene load_steps=3 format=3 uid="uid://cv3ut4fjk4onv"]
 
 [ext_resource type="Script" path="res://Dash.gd" id="1_hksr8"]
+[ext_resource type="Texture2D" uid="uid://bck6h5ordox76" path="res://Screen Overlay Effects/Warbringer.png" id="2_jr0lk"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_hksr8")
 uses = 10
+sprite = ExtResource("2_jr0lk")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdq7fxo07dbuf"]
+[gd_scene load_steps=3 format=3 uid="uid://bdq7fxo07dbuf"]
 
 [ext_resource type="Script" path="res://ChargeProj_card.gd" id="1_3jld3"]
+[ext_resource type="Texture2D" uid="uid://cvhsmqx8lkdth" path="res://Image.jpg" id="2_qp4ym"]
 
 [node name="ChargeProj_card" type="Node3D"]
 script = ExtResource("1_3jld3")
 uses = 5
+sprite = ExtResource("2_qp4ym")

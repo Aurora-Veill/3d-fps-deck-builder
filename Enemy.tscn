@@ -22,7 +22,7 @@ mesh = SubResource("CapsuleMesh_lfkk1")
 maxHP = 2
 
 [node name="AtkCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.75
 one_shot = true
 
 [connection signal="onDeath" from="HP" to="." method="_on_hp_on_death"]

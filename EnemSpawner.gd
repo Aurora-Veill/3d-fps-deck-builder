@@ -1,13 +1,13 @@
 extends Node3D
 
 var enemy = preload("res://Enemy.tscn")
-@onready var PC = $"../PC"
 @onready var spawns = get_node("../Spawns").get_children()
 @onready var upgradeSpawner = $"../UpgradeSpawner"
 signal enemDeath
-var deathsTill = 4
+var deathsTill = 1
 # Called when the node enters the scene tree for the first time.
-
+func _ready():
+	spawn_enem()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -16,7 +16,7 @@ func _process(delta):
 func spawn_enem():
 	var enem = enemy.instantiate()
 	enem.position = spawns[(randi() % spawns.size())].position
-	enem.target = $PC
+	enem.target = $"../PC"
 	enem.onDeath.connect(on_enem_death)
 	add_child(enem)
 

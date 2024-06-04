@@ -1,13 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=16 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="Texture2D" uid="uid://dqj6iapirjnh8" path="res://Free_pixel_tiles_pack/cobblestone_1.png" id="1_55pi2"]
 [ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
-[ext_resource type="PackedScene" uid="uid://bill4hihgcgko" path="res://card_pickup.tscn" id="2_myxa0"]
-[ext_resource type="PackedScene" uid="uid://cv3ut4fjk4onv" path="res://dash_card.tscn" id="3_sdl81"]
-[ext_resource type="Texture2D" uid="uid://bck6h5ordox76" path="res://Screen Overlay Effects/Warbringer.png" id="4_5juu7"]
-[ext_resource type="PackedScene" uid="uid://bdq7fxo07dbuf" path="res://charge_proj_card.tscn" id="5_oaamp"]
+[ext_resource type="Script" path="res://BoxContainer.gd" id="4_qflal"]
 [ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="5_vbrxr"]
-[ext_resource type="Texture2D" uid="uid://cvhsmqx8lkdth" path="res://Image.jpg" id="6_m307q"]
 [ext_resource type="Script" path="res://Control.gd" id="6_w6i24"]
 [ext_resource type="Texture2D" uid="uid://cbfirovlf2pc6" path="res://Screen Overlay Effects/blurry Blood Smear Overlay.png" id="7_abb43"]
 [ext_resource type="Script" path="res://EnemSpawner.gd" id="12_f3dck"]
@@ -41,16 +37,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.0, 0.0, 0, 0, Vect
 point_count = 5
 
 [node name="Node3D" type="Node3D"]
-
-[node name="CardPickup" parent="." instance=ExtResource("2_myxa0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.640744, 6.69345, -16.4626)
-heldcard = ExtResource("3_sdl81")
-sprite = ExtResource("4_5juu7")
-
-[node name="CardPickup2" parent="." instance=ExtResource("2_myxa0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14.6)
-heldcard = ExtResource("5_oaamp")
-sprite = ExtResource("6_m307q")
 
 [node name="PC" parent="." instance=ExtResource("1_scl8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45815, 0)
@@ -105,6 +91,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_qflal")
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/BoxContainer"]
 scale = Vector2(2, 2)
@@ -113,6 +100,18 @@ texture = ExtResource("5_vbrxr")
 [node name="Blood" type="Sprite2D" parent="Control/BoxContainer"]
 self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("7_abb43")
+
+[node name="Card0" type="Sprite2D" parent="Control/BoxContainer"]
+position = Vector2(848, 384)
+
+[node name="Card1" type="Sprite2D" parent="Control/BoxContainer"]
+position = Vector2(618, 384)
+
+[node name="Card2" type="Sprite2D" parent="Control/BoxContainer"]
+position = Vector2(388, 384)
+
+[node name="Card3" type="Sprite2D" parent="Control/BoxContainer"]
+position = Vector2(158, 384)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
