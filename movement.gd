@@ -69,7 +69,8 @@ func removeCard():
 	activeCard = max(0, activeCard-1)
 
 func addCard(Card):
-	hand.append(Card.instantiate())
+	if hand.size() == 4:
+		hand.append(Card.instantiate())
 
 func _on_hp_on_death():
 	get_tree().change_scene_to_file("res://node_3d.tscn")

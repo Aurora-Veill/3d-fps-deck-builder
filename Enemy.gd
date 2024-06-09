@@ -21,15 +21,16 @@ func _physics_process(delta):
 	move_and_slide()
 	if !target:
 		return
+	if position.distance_to(target.global_position) < 25:
+		if position.distance_to(target.global_position) < 10:
+			velocity = Vector3(randf(), 0, randf()).normalized() * SPEED
+		if canAttack:
+			atkCD.start()
+			attack(projectile)
+			canAttack = false
 	nav.set_target_position(target.global_position)
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	velocity = velocity.lerp(direction * SPEED, delta)
-	
-	if target.position.distance_to(position) < 25 and canAttack:
-		atkCD.start()
-		attack(projectile)
-		canAttack = false
-		
 func attack(projectile: PackedScene) -> void:
 		var atk = projectile.instantiate()
 		atk.position = position
