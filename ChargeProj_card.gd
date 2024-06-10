@@ -11,7 +11,8 @@ func use(Player):
 		var atk2 = proj.instantiate()
 		atk2.position = Player.position
 		atk2.set_dir(-Player.cameraf.get_global_transform().basis.z, true)
-		atk2.pVel += i.position/250
+		atk2.pVel.y += (randf_range(0.01, 2) * i.position.y)/250
+		atk2.pVel.z += (randf_range(0.01, 2) * i.position.z)/250
 		atk2.maker = Player
 		Player.get_parent().add_child(atk2)
 	uses -= 1

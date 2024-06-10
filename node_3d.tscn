@@ -1,7 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=25 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
+[ext_resource type="PackedScene" uid="uid://bill4hihgcgko" path="res://card_pickup.tscn" id="2_6p3ln"]
 [ext_resource type="Texture2D" uid="uid://be8hjrp42g206" path="res://Free_pixel_tiles_pack/cobblestone_3.png" id="3_e1dy4"]
+[ext_resource type="PackedScene" uid="uid://bdq7fxo07dbuf" path="res://charge_proj_card.tscn" id="3_y1w55"]
 [ext_resource type="Script" path="res://BoxContainer.gd" id="4_qflal"]
 [ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="5_vbrxr"]
 [ext_resource type="Script" path="res://Control.gd" id="6_w6i24"]
@@ -68,6 +70,9 @@ camera_attributes = SubResource("CameraAttributesPractical_uuqen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.263385, 0.964691, 0, -0.964691, 0.263385, 0, 18.2122, 8.18105)
+
+[node name="CardPickup" parent="." instance=ExtResource("2_6p3ln")]
+heldcard = ExtResource("3_y1w55")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
