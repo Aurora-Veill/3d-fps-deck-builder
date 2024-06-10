@@ -69,7 +69,7 @@ func removeCard():
 	activeCard = max(0, activeCard-1)
 
 func addCard(Card):
-	if hand.size() == 4:
+	if hand.size() < 4:
 		hand.append(Card.instantiate())
 
 func _on_hp_on_death():
