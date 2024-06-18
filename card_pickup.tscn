@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bill4hihgcgko"]
+[gd_scene load_steps=6 format=3 uid="uid://bill4hihgcgko"]
 
 [ext_resource type="Script" path="res://CardPickup.gd" id="1_ekdsj"]
 [ext_resource type="Texture2D" uid="uid://bck6h5ordox76" path="res://Screen Overlay Effects/Warbringer.png" id="2_s2mk1"]
+
+[sub_resource type="Curve" id="Curve_hdbue"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="BoxMesh" id="BoxMesh_smfm2"]
 size = Vector3(1.1, 1.55, 0.05)
@@ -11,6 +16,7 @@ size = Vector3(1.7, 2.2, 1)
 
 [node name="CardPickup" type="Node3D"]
 script = ExtResource("1_ekdsj")
+BobCurve = SubResource("Curve_hdbue")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_smfm2")
