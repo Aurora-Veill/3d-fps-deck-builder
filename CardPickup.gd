@@ -13,11 +13,10 @@ func _ready():
 
 func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if (body.has_method("addCard")):
-		body.addCard(heldcard)
-		queue_free()
+		body.addCard(heldcard, self)
 func _process(delta):
-	rotation.y += 1 * delta
-	Cycle100 += 1.0
+	rotation.y += delta
+	Cycle100 += delta * 30
 	if Cycle100 > 100:
 		Cycle100 = 0.0
 	if BobCurve:

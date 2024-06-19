@@ -1,7 +1,8 @@
 extends Control
 
 @export var dmgCurve: Curve
-@onready var PCHP = get_node("../PC/HP")
+@export var PC: Node
+@onready var PCHP = PC.getHPNode()
 @onready var blood = $BoxContainer/Blood
 # Called when the node enters the scene tree for the first time.
 var dmgVal = 0

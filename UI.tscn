@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://evn2lqlfdcgv"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_cdwat"]
+[ext_resource type="Script" path="res://BoxContainer.gd" id="2_iowry"]
+[ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="3_rrteo"]
+[ext_resource type="Texture2D" uid="uid://cbfirovlf2pc6" path="res://Screen Overlay Effects/blurry Blood Smear Overlay.png" id="4_qrndx"]
+[ext_resource type="Texture2D" uid="uid://cbwgejv1ksidj" path="res://Screen Overlay Effects/Numbers.png" id="5_i3rbi"]
+
+[sub_resource type="Curve" id="Curve_o5hhy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0.75), 0.0, 0.0, 0, 0, Vector2(0.75, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdwat")
+dmgCurve = SubResource("Curve_o5hhy")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_iowry")
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxContainer"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_rrteo")
+
+[node name="Blood" type="Sprite2D" parent="BoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_qrndx")
+
+[node name="Card0" type="Sprite2D" parent="BoxContainer"]
+position = Vector2(848, 384)
+
+[node name="Uses0" type="Sprite2D" parent="BoxContainer/Card0"]
+position = Vector2(-79, -187)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i3rbi")
+hframes = 4
+vframes = 4
+frame = 15
+
+[node name="Card1" type="Sprite2D" parent="BoxContainer"]
+position = Vector2(618, 384)
+
+[node name="Uses1" type="Sprite2D" parent="BoxContainer/Card1"]
+position = Vector2(-79, -187)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i3rbi")
+hframes = 4
+vframes = 4
+frame = 15
+
+[node name="Card2" type="Sprite2D" parent="BoxContainer"]
+position = Vector2(388, 384)
+
+[node name="Uses2" type="Sprite2D" parent="BoxContainer/Card2"]
+position = Vector2(-79, -187)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i3rbi")
+hframes = 4
+vframes = 4
+frame = 15
+
+[node name="Card3" type="Sprite2D" parent="BoxContainer"]
+position = Vector2(158, 384)
+
+[node name="Uses3" type="Sprite2D" parent="BoxContainer/Card3"]
+position = Vector2(-79, -187)
+scale = Vector2(4, 4)
+texture = ExtResource("5_i3rbi")
+hframes = 4
+vframes = 4
+frame = 15

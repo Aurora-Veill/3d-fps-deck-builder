@@ -68,9 +68,10 @@ func removeCard():
 	hand.remove_at(activeCard)
 	activeCard = max(0, activeCard-1)
 
-func addCard(Card):
+func addCard(Card, Pickup):
 	if hand.size() < 4:
 		hand.append(Card.instantiate())
+		Pickup.queue_free()
 
 func _on_hp_on_death():
 	get_tree().change_scene_to_file("res://node_3d.tscn")
@@ -87,3 +88,6 @@ func useCard():
 			
 func _on_hp_take_dmg():
 	take_dmg.emit()
+
+func getHPNode():
+	return $HP

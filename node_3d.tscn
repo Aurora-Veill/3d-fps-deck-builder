@@ -1,12 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c087l7ltwvq5r"]
+[gd_scene load_steps=21 format=3 uid="uid://c087l7ltwvq5r"]
 
 [ext_resource type="PackedScene" uid="uid://cof1cf5gtmex" path="res://character_body_3d.tscn" id="1_scl8b"]
+[ext_resource type="PackedScene" uid="uid://evn2lqlfdcgv" path="res://UI.tscn" id="1_tcpay"]
 [ext_resource type="Texture2D" uid="uid://be8hjrp42g206" path="res://Free_pixel_tiles_pack/cobblestone_3.png" id="3_e1dy4"]
-[ext_resource type="Script" path="res://BoxContainer.gd" id="4_qflal"]
-[ext_resource type="Texture2D" uid="uid://bb0nxf4u4vnl0" path="res://aim reticle.png" id="5_vbrxr"]
-[ext_resource type="Script" path="res://Control.gd" id="6_w6i24"]
-[ext_resource type="Texture2D" uid="uid://cbfirovlf2pc6" path="res://Screen Overlay Effects/blurry Blood Smear Overlay.png" id="7_abb43"]
-[ext_resource type="Texture2D" uid="uid://cbwgejv1ksidj" path="res://Screen Overlay Effects/Numbers.png" id="7_wqpb4"]
 [ext_resource type="Script" path="res://EnemSpawner.gd" id="12_f3dck"]
 [ext_resource type="Script" path="res://UpgradeSpawner.gd" id="13_3mcwk"]
 
@@ -60,11 +56,10 @@ albedo_texture = ExtResource("3_e1dy4")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueeyd"]
 albedo_texture = ExtResource("3_e1dy4")
 
-[sub_resource type="Curve" id="Curve_tpruo"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0.75), 0.0, 0.0, 0, 0, Vector2(0.75, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 5
-
 [node name="Node3D" type="Node3D"]
+
+[node name="UI" parent="." node_paths=PackedStringArray("PC") instance=ExtResource("1_tcpay")]
+PC = NodePath("../PC")
 
 [node name="PC" parent="." instance=ExtResource("1_scl8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.45815, 0)
@@ -156,81 +151,6 @@ use_collision = true
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 5, 10.8047, 3.9, 10.8506)
 material_override = SubResource("StandardMaterial3D_xeph4")
 use_collision = true
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_w6i24")
-dmgCurve = SubResource("Curve_tpruo")
-
-[node name="BoxContainer" type="BoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_qflal")
-
-[node name="Sprite2D" type="Sprite2D" parent="Control/BoxContainer"]
-scale = Vector2(2, 2)
-texture = ExtResource("5_vbrxr")
-
-[node name="Blood" type="Sprite2D" parent="Control/BoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-texture = ExtResource("7_abb43")
-
-[node name="Card0" type="Sprite2D" parent="Control/BoxContainer"]
-position = Vector2(848, 384)
-
-[node name="Uses0" type="Sprite2D" parent="Control/BoxContainer/Card0"]
-position = Vector2(-79, -187)
-scale = Vector2(4, 4)
-texture = ExtResource("7_wqpb4")
-hframes = 4
-vframes = 4
-frame = 15
-
-[node name="Card1" type="Sprite2D" parent="Control/BoxContainer"]
-position = Vector2(618, 384)
-
-[node name="Uses1" type="Sprite2D" parent="Control/BoxContainer/Card1"]
-position = Vector2(-79, -187)
-scale = Vector2(4, 4)
-texture = ExtResource("7_wqpb4")
-hframes = 4
-vframes = 4
-frame = 15
-
-[node name="Card2" type="Sprite2D" parent="Control/BoxContainer"]
-position = Vector2(388, 384)
-
-[node name="Uses2" type="Sprite2D" parent="Control/BoxContainer/Card2"]
-position = Vector2(-79, -187)
-scale = Vector2(4, 4)
-texture = ExtResource("7_wqpb4")
-hframes = 4
-vframes = 4
-frame = 15
-
-[node name="Card3" type="Sprite2D" parent="Control/BoxContainer"]
-position = Vector2(158, 384)
-
-[node name="Uses3" type="Sprite2D" parent="Control/BoxContainer/Card3"]
-position = Vector2(-79, -187)
-scale = Vector2(4, 4)
-texture = ExtResource("7_wqpb4")
-hframes = 4
-vframes = 4
-frame = 15
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
