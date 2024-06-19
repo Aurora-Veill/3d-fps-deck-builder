@@ -4,7 +4,7 @@ var enemy = preload("res://Enemy.tscn")
 @onready var spawns = get_node("../Spawns").get_children()
 @onready var upgradeSpawner = $"../UpgradeSpawner"
 signal enemDeath
-var deathsTill = 1
+var deathsTill = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_enem()

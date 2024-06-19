@@ -3,7 +3,7 @@ extends Control
 @export var dmgCurve: Curve
 @export var PC: Node
 @onready var PCHP = PC.getHPNode()
-@onready var blood = $BoxContainer/Blood
+@onready var blood = $"Fullscreen Effects/Blood"
 # Called when the node enters the scene tree for the first time.
 var dmgVal = 0
 
